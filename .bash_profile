@@ -1,5 +1,6 @@
 # Add `~/bin` to the `$PATH`
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+#export PATH=$HOME/bin:/usr/local/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
+export PATH=/usr/local/bin:$HOME/bin:$PATH
 #export PATH=/usr/local/Cellar/vim/7.4.488/bin:$PATH
 
 # Load the shell dotfiles, and then some:
