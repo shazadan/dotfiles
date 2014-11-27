@@ -70,7 +70,7 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 " change the mapleader from \ to ,
-"let mapleader=","
+let mapleader=","
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
