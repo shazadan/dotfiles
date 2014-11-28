@@ -1,3 +1,6 @@
+" Autoloading of .vimrc
+autocmd! bufwritepost .vimrc source %
+
 " Map leader to comma - before all plugins
 let mapleader=","
 
@@ -81,10 +84,6 @@ filetype plugin indent on    " required
 " Vundle Configuration END
 " ========================
 
-" Quickly edit/reload the vimrc file
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
-nmap <silent> <leader>sv :so $MYVIMRC<CR>
-
 " Visual settings
 set hidden                      " hide buffers instead of closing them
 set nowrap                      " don't wrap lines
@@ -130,6 +129,20 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
+" Easy tab navigation
+map <leader>n <esc>:tabprevious <CR>
+map <leader>m <esc>:tabnext <CR>
+
+" Copy/Paste settings
+set pastetoggle=<F3>
+set clipboard=unnamed
+
+" Mouse settings
+set mouse=a
+
+" Normal backspace behavior
+set bs=2
 
 
 " ==========================
