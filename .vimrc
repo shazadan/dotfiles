@@ -1,4 +1,9 @@
+" Map leader to comma - before all plugins
+let mapleader=","
+
+" ====================
 " Vundle Configuration
+" ====================
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -38,7 +43,12 @@ Plugin 'https://github.com/edkolev/tmuxline.vim.git'
 
 " Development
 Plugin 'https://github.com/tpope/vim-surround.git'
-Plugin 'https://github.com/msanders/snipmate.vim.git'
+" snipmate begin
+Plugin 'https://github.com/MarcWeber/vim-addon-mw-utils.git'
+Plugin 'https://github.com/tomtom/tlib_vim.git'
+Plugin 'https://github.com/garbas/vim-snipmate.git'
+Plugin 'https://github.com/honza/vim-snippets.git'
+" snipmate end
 Plugin 'https://github.com/scrooloose/syntastic.git'
 Plugin 'https://github.com/vim-scripts/TaskList.vim.git'
 Plugin 'https://github.com/mileszs/ack.vim.git'
@@ -50,7 +60,6 @@ Plugin 'https://github.com/jmcantrell/vim-virtualenv.git'
 Plugin 'https://github.com/nvie/vim-flake8.git'
 Plugin 'https://github.com/fs111/pydoc.vim.git'
 Plugin 'https://github.com/alfredodeza/pytest.vim.git'
-Plugin 'https://github.com/klen/python-mode.git'
 Plugin 'https://github.com/davidhalter/jedi-vim.git'
 
 " All of your Plugins must be added before the following line
@@ -68,15 +77,15 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-
-" change the mapleader from \ to ,
-let mapleader=","
+" ========================
+" Vundle Configuration END
+" ========================
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
-" General vim settings
+" Visual settings
 set hidden                      " hide buffers instead of closing them
 set nowrap                      " don't wrap lines
 set tabstop=4                   " a tab is four spaces
@@ -92,13 +101,17 @@ set smartcase                   " ignore case if search pattern is all lowercase
 set smarttab                    " insert tabs on the start of a line according to shiftwidth, not tabstop
 set hlsearch                    " highlight search terms
 set incsearch                   " show search matches as you type
+set title                       " change the terminal's title
 
+" Retain sufficient buffer history
 set history=1000                " remember more commands and search history
 set undolevels=1000             " use many muchos levels of undo
-set title                       " change the terminal's title
+
+" Sound settings
 set visualbell                  " don't beep
 set noerrorbells                " don't beep
 
+" Backup settings
 set nobackup
 set noswapfile
 
@@ -118,14 +131,17 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-" mounse on
-" set mouse=a
 
-" Solarized color scheme
+" ==========================
+" PLUGIN SETTINGS START HERE
+" ==========================
+
+" Color Theme Settings - Solarized
 syntax enable
 set background=dark
 let g:solarized_termcolors = 256  " New line!!
 colorscheme solarized
+
 
 " Highlight excess line length
 augroup vimrc_autocmds
@@ -136,15 +152,20 @@ augroup vimrc_autocmds
     autocmd FileType python set nowrap
     augroup END
 
-" NERDTree Settings    
+" =================
+" NERDTree Settings
 " =================
 " toggle mapping
 map <F2> :NERDTreeToggle<CR>
+
 " auto start with vim launch
 "autocmd vimenter * NERDTree
-" dlose NerdTree if only window
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+" close NerdTree if only window
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" =====================
+" NERDTree Settings END
+" =====================
 
 " Use fugitive to show git branch in status bar
 set statusline=%{fugitive#statusline()}
@@ -153,7 +174,6 @@ set statusline=%{fugitive#statusline()}
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
 let g:airline_powerline_fonts = 1
 set laststatus=2
-set timeoutlen=50
 
 " Tasklist mapping
 map <leader>td <Plug>TaskList
@@ -161,15 +181,20 @@ map <leader>td <Plug>TaskList
 " Gundo - Revision History - mapping
 map <leader>g :GundoToggle<CR>
 
-" Supertab completion
-"" Context sensitive and to enable omni code completion
+" ===================
+" SuperTab Completion
+" ===================
+" Context sensitive and to enable omni code completion
 au FileType python set omnifunc=pythoncomplete#Complete
 let g:SuperTabDefaultCompletionType = "context"
 
 "" Enable the menu and pydoc preview
 set completeopt=menuone,longest,preview
+" =======================
+" SuperTab Completion END
+" =======================
 
-"" Ack mapping for search
+" Ack mapping for search
 nmap <leader>a <Esc>:Ack!
 
 " CtrlP
@@ -178,3 +203,8 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*.pyc,*.pyo,*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+
+
+" ========================
+" PLUGIN SETTINGS END HERE
+" ========================
